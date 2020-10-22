@@ -152,6 +152,7 @@ module.exports = class extends think.cmswing.admin {
         return this.fail('编辑失败！');
       }
     } else {
+      console.log(2333)
       const info = await this.model('member_group').where({groupid: this.get('id')}).find();
       this.assign('info', info);
       this.meta_title = '编辑会员组';
@@ -441,4 +442,51 @@ module.exports = class extends think.cmswing.admin {
       return this.json(res);
     }
   }
+
+  /**
+     * role
+     * 权限管理首页ajax角色列表
+     * @returns {Promise|*}
+     */
+    // async informationAction() {
+    //   const gets = this.get();
+    //   const draw = gets.draw;
+    //   const res = await this.model('auth_role').field('id,desc,status,description').order('id ASC').select();
+    //   const data = {
+    //     'draw': draw,
+    //     'data': res
+    //   };
+    //   console.log(data);
+    //   return this.json(data);
+    // }
+    async informationAction() {
+      const list = await this.model('member_group').order('sort ASC').select();
+      for (const v of list) {
+        console.log(v)
+        v.count = await this.model('member').where({groupid: v.groupid, status: 1}).count('id');
+      }
+      let info = {'icon': ''}
+      this.assign('list', list);
+      this.meta_title = '商家认证信息';
+      await this.hook('adminUpPic', 'icon', info.icon, {$hook_key: 'icon'});
+      // if (f.type === 'editor') {
+        
+      //   if (editor === '0') {
+      //     await this.hook('adminEdit', f.name, data[f.name], {$hook_key: f.name});
+      //   } else {
+      //     await this.hook('adminEdit', f.name, data[f.name], {$hook_key: f.name, $hook_type: editor});
+      //   }
+      // } else if (f.type === 'picture') {
+      //   await this.hook('adminUpPic', f.name, data[f.name], {$hook_key: f.name});
+      // } else if (f.type === 'pics') {
+      //   await this.hook('adminUpPics', f.name, data[f.name], {$hook_key: f.name});
+      // } else if (f.type === 'file') {
+      //   await this.hook('adminUpFile', f.name, data[f.name], {$hook_key: f.name});
+      // } else if (f.type === 'atlas') {
+      //   await this.hook('adminAtlas', f.name, data[f.name], {$hook_key: f.name});
+      // };
+
+      return this.display();
+      
+    }
 };

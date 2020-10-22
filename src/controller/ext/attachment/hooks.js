@@ -40,8 +40,16 @@ module.exports = class extends think.cmswing.extIndex {
    */
   async adminUpPic(name, val) {
     // 钩子业务处理
+    
     this.assign({name: name, val: val});
     const html = await this.hookRender('adminUpPic', 'attachment');
+    return html;
+  };
+  async adminUpPicss(name, val) {
+    // 钩子业务处理
+    
+    this.assign({name: name, val: val});
+    const html = await this.hookRender('adminUpPicss', 'attachment');
     return html;
   };
   /**

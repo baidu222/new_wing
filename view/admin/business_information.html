@@ -47,13 +47,27 @@
                             </div>
                         </div>
                     </div>
+                    <!-- 公司经营方式 -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold"><i class="fa fa-asterisk text-danger" style="margin-right: 5px; font-size: 2px"></i>经营方式</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <textarea class="form-control" name="operation" placeholder="支持中文、英文、数字、标点符号输入">{{ info.operation }}</textarea>
+                                </div>
+                                <!-- <div class="col-md-12">
+                                    <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
                     <!-- 公司经营范围 -->
                     <div class="form-group">
                         <label class="col-sm-2 control-label font-bold"><i class="fa fa-asterisk text-danger" style="margin-right: 5px; font-size: 2px"></i>经营范围</label>
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <textarea class="form-control" name="description" placeholder="支持中文、英文、数字、标点符号输入">{{ info.description }}</textarea>
+                                    <textarea class="form-control" name="range" placeholder="支持中文、英文、数字、标点符号输入">{{ info.range }}</textarea>
                                 </div>
                                 <!-- <div class="col-md-12">
                                     <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
@@ -67,7 +81,7 @@
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-md-5">
-                            <input type="text" class="form-control" name="name" value="{{info.name if info.name else null}}" placeholder="支持中文、英文、数字、标点符号输入" data-required="true" >
+                            <input type="text" class="form-control" name="legalPerson" value="{{info.legalPerson if info.legalPerson else null}}" placeholder="支持中文、英文、数字、标点符号输入" data-required="true" >
                                 </div>
                                 <!-- <div class="col-md-12">
                                     <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
@@ -81,7 +95,7 @@
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-md-5">
-                            <input type="text" class="form-control" name="name" value="{{info.name if info.name else null}}" placeholder="支持数字、标点符号输入"  data-required="true" >
+                            <input type="text" class="form-control" name="tel" value="{{info.tel if info.tel else null}}" placeholder="支持数字、标点符号输入"  data-required="true" >
                                 </div>
                                 <!-- <div class="col-md-12">
                                     <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
@@ -95,7 +109,21 @@
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-md-5">
-                            <input type="text" class="form-control" name="name" value="{{info.name if info.name else null}}" placeholder="支持英文、数字、标点符号输入" data-required="true" >
+                            <input type="text" class="form-control" name="email" value="{{info.email if info.email else null}}" placeholder="支持英文、数字、标点符号输入" data-required="true" >
+                                </div>
+                                <!-- <div class="col-md-12">
+                                    <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 公司地址 -->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold"><i class="fa fa-asterisk text-danger" style="margin-right: 5px; font-size: 2px"></i>公司地址</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                            <input type="text" class="form-control" name="address" value="{{info.address if info.address else null}}" placeholder="支持英文、数字、标点符号输入" data-required="true" >
                                 </div>
                                 <!-- <div class="col-md-12">
                                     <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 支持中文、英文、数字、标点符号输入</span>
@@ -105,7 +133,7 @@
                     </div>
                     <!-- 图片1上传-->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label font-bold">审核文件1</label>
+                        <label class="col-sm-2 control-label font-bold">logo上传</label>
                         <div class="col-sm-10">
                             <div class="row">
                                 <div class="col-sm-10">
@@ -121,21 +149,78 @@
                     </div>
                     <!-- 图片1上传-->
                     <div class="form-group">
-                        <label class="col-sm-2 control-label font-bold">审核文件2</label>
+                        <label class="col-sm-2 control-label font-bold">企业营业执照</label>
                         <div class="col-sm-10">
                             <div class="row">
-                                <div class="col-sm-10">
+                                <!-- <div class="col-sm-10">
                                     {{HOOKS@adminUpPicss.icon|safe}}
                                 </div>
                                 <div class="col-md-12 hide">
                                     <span class="help-block m-b-none text-muted"><i class="fa fa-info-circle text-info"></i> 图片上传</span>
+                                </div> -->
+                                <div class="col-md-5">
+                                    <input type="file" id="file_input" multiple/>   
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-                    
+                    <!-- 图片1上传-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold">银行开户许可证</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="file" id="file_input" multiple/>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 图片1上传-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold">医疗器械生产许可证</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="file" id="file_input" multiple/>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 图片1上传-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold">生产备案凭证</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="file" id="file_input" multiple/>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 图片1上传-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold">网络销售许可证</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="file" id="file_input" multiple/>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 图片1上传-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label font-bold">法人身份证复印件</label>
+                        <div class="col-sm-10">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <input type="file" id="file" multiple/>
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="line line-dashed b-b line-lg pull-in"></div>
                     <div class="form-group form-submit">
                         <div class="col-sm-4 col-sm-offset-2">
@@ -159,8 +244,32 @@
 <script src="/static/admin/js/parsley/parsley.extend.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function(){
-
-
-    })
+        $('form').submit(evt=>{
+            evt.preventDefault(); // 阻止表单默认提交
+            $.ajax({
+                url: '/user/personal/update', // 请求地址
+                type: 'POST', // 请求方法
+                dataType: 'json', // 请求的数据类型
+                data: $('form').serialize(), 
+                success:res=>{
+                    if(!res.errno) {
+                        alert('Update Successfully！');
+                        window.location.reload();
+                    }
+                    else alert(res.errmsg);
+                }
+            });
+        });
+    });
+    // $(function(){
+        let file = document.querySelector('#file');
+        file.onchange = function(e){
+            e = e || event;
+            console.log(this.files[0])
+            
+        }
+    // });
+    
+    
 </script>
 {% endblock %}
